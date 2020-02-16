@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<%#include "vessel.h" %>
+<% tfetch(QVariantMap, vessel); %>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>New Vessel</h1>
+
+<%== formTag(urla("create"), Tf::Post) %>
+  <p>
+    <label>Name<br /><input name="vessel[name]" value="<%= vessel["name"] %>" /></label>
+  </p>
+  <p>
+    <label>Build Year<br /><input name="vessel[buildYear]" value="<%= vessel["buildYear"] %>" /></label>
+  </p>
+  <p>
+    <label>Type<br /><input name="vessel[type]" value="<%= vessel["type"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Create" />
+  </p>
+</form>
+
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

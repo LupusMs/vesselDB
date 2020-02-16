@@ -1,0 +1,16 @@
+.table {
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+.table-header {
+    background: bisque;
+}
+
+.table-row {
+    background: azure;
+}
+
+.table-row > td {
+    padding: 10px;
+}

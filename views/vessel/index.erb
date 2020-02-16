@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vessel DB</title>
+    <%== styleSheetTag(cssPath("app.css")); %>
+</head>
+<body>
+
+<div id="vessel">
+<table class="table">
+<caption>
+Vessels
+</caption>
+<tr class="table-header">
+  <th>IMO</th>
+  <th>Name</th>
+  <th>Year</th>
+  <th>Type</th>
+</tr>
+<tbody id="tableBody">
+</tbody>
+</table> 
+</div>
+<script>
+
+
+</script>
+
+</body>
+
+<script> 
+function createRows(data)
+{
+    var htmlItems = [];
+    for(item in data) {
+        htmlItems.push("<tr class='table-row'><td>" + data[item].imo + "</td><td>" + data[item].name + "</td><td>" + data[item].buildYear + "</td><td>" + data[item].type + "</td></tr>");
+    }
+
+    return htmlItems.join("");
+}   
+
+document.addEventListener("DOMContentLoaded", function(){
+    var request = new XMLHttpRequest();
+    request.open('GET', '/Vessel/getVessels');
+    request.onload = function() {
+        var myArr = JSON.parse(this.responseText);
+        var elements = createRows(myArr);
+        document.getElementById('tableBody').innerHTML += elements;
+    }
+    request.send();
+
+});
+
+</script>
+</html>

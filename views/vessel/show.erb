@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<%#include "vessel.h" %>
+<% tfetch(Vessel, vessel); %>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Vessel</h1>
+<dt>Imo</dt><dd><%= vessel.imo() %></dd><br />
+<dt>Name</dt><dd><%= vessel.name() %></dd><br />
+<dt>Build Year</dt><dd><%= vessel.buildYear() %></dd><br />
+<dt>Type</dt><dd><%= vessel.type() %></dd><br />
+
+<%== linkTo("Edit", urla("save", vessel.imo())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>
